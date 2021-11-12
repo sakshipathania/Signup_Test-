@@ -144,23 +144,37 @@ public class sign_up_correct_data extends Set {
 	@Then("^user lands on pricing page and then user go to free ppts page cd$")
 	public void user_lands_on_pricing_page_and_then_user_go_to_free_ppts_page_cd() throws InterruptedException  {
 		
-		Thread.sleep(5000);
-		Actions actions = new Actions(driver);
-		WebElement free_ppt_btn1=wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Free Stuff")));
-		actions.moveToElement(free_ppt_btn1).moveToElement(driver.findElement(By.xpath("//a[contains(text(),'Free PPTs')]"))).click().build().perform();
-		Thread.sleep(7000);
-		//WebElement free_ppt_btn=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/header/div[1]/div[2]/div/nav/div/div/ul/li[2]/div/ul/li[1]/a")));
-	    //free_ppt_btn.click();
-	    //Thread.sleep(2000);
+		/*
+		 * Thread.sleep(1000); Actions actions = new Actions(driver); WebElement
+		 * free_ppt_btn1 =
+		 * wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Free Stuff"))
+		 * ); actions.moveToElement(free_ppt_btn1)
+		 * .moveToElement(driver.findElement(By.xpath("//a[@title='Free Business PPTs']"
+		 * ))).click().build() .perform();
+		 */
+
+		try {
+			WebElement popular_PPt = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Most Downloaded']")));
+
+			popular_PPt.click();
+			Thread.sleep(2000);
+			WebElement select_PPt = wait.until(ExpectedConditions
+					.elementToBeClickable(By.xpath("//a[@title='Business Process Evaluation Powerpoint Show']")));
+			js.executeScript("arguments[0].scrollIntoView();", select_PPt);
+			Thread.sleep(2000);
+			select_PPt.click();
+		} catch (NoSuchElementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	   
 	}
 
 	@Then("^user download a free product cd$")
 	public void user_download_a_free_product_cd() throws InterruptedException  {
-		//driver.findElement(By.cssSelector("li.item:nth-child(8) > div:nth-child(1) > div:nth-child(2) > strong:nth-child(1) > span:nth-child(1) > a:nth-child(1)")).click();
-		//Thread.sleep(3000);
 		
-		driver.get("https://www.slideteam.net/circular-flow-of-process-4-stages-powerpoint-slides-templates.html");
+		/*driver.get("https://www.slideteam.net/circular-flow-of-process-4-stages-powerpoint-slides-templates.html");
 		Thread.sleep(3000);
 		
 		WebElement dwnd_btn = driver.findElement(By.cssSelector("#clicking"));
@@ -168,7 +182,26 @@ public class sign_up_correct_data extends Set {
 		 dwnd_btn.click();
 		Thread.sleep(3000);
 	   driver.get("https://www.slideteam.net/");
-	   Thread.sleep(3000);
+	   Thread.sleep(3000);*/
+		try {
+			Thread.sleep(2000);
+			WebElement download_PPt = wait
+					.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='clicking']")));
+			js.executeScript("arguments[0].scrollIntoView();", download_PPt);
+			download_PPt.click();
+			Thread.sleep(2000);
+
+			String Error_message = wait
+					.until(ExpectedConditions.elementToBeClickable(
+							By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")))
+					.getText();
+			Assert.assertTrue("message is not showing", Error_message.contains(""));
+			System.out.println("message is showing");
+		} catch (NoSuchElementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Then("^user delete the new account created cd$")
