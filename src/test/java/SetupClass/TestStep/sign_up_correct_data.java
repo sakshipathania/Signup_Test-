@@ -156,7 +156,7 @@ public class sign_up_correct_data extends Set {
 		try {
 			WebElement popular_PPt = wait
 					.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Most Downloaded']")));
-
+                        Thread.sleep(2000);
 			popular_PPt.click();
 			Thread.sleep(2000);
 			WebElement select_PPt = wait.until(ExpectedConditions
