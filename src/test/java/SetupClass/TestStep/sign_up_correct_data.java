@@ -32,6 +32,7 @@ public class sign_up_correct_data extends Set {
 		driver.navigate().refresh();
 		Thread.sleep(2000);
 		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		log.info("It's opening the website URL");
 	    Thread.sleep(2000);
 	   /* try {
