@@ -21,12 +21,20 @@ public class sign_up_correct_data extends Set {
 	
 	@Given("^user is already on sign up page cd$")
 	public void user_is_already_on_sign_up_page_cd() throws InterruptedException  {
-	    
+	    driver.manage().deleteAllCookies();
+		Thread.sleep(4000); // wait 4 seconds to clear cookies.
+		driver.navigate().refresh();
+		Thread.sleep(2000);
 		driver.get(AppURL);
+		
+		driver.manage().deleteAllCookies();
+		Thread.sleep(4000); // wait 4 seconds to clear cookies.
+		driver.navigate().refresh();
+		Thread.sleep(2000);
 		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 		log.info("It's opening the website URL");
 	    Thread.sleep(2000);
-	    try {
+	   /* try {
 			WebElement logout = driver.findElement(By.xpath("//a[contains(text(),'Sign Out')]"));
 			if (logout.isEnabled()) {
 				logout.click();
@@ -36,7 +44,7 @@ public class sign_up_correct_data extends Set {
 			}
 		} catch (NoSuchElementException Ext) {
 
-		}
+		}*/
 	    Thread.sleep(3000);
 		try {
 			driver.findElement(By.cssSelector("ul.header > li:nth-child(1) > a:nth-child(1)")).click();
