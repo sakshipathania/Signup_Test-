@@ -150,7 +150,7 @@ public class Non_Logged_In_User extends Set {
 		 WebElement account = driver.findElement(By.xpath("//a[contains(.,'My Account')]"));
 			  Thread.sleep(3000);
 			account.click();
-		 Thread.sleep(3000);
+		 Thread.sleep(8000);
 		 
 		
 
