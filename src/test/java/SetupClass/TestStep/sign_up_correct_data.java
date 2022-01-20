@@ -75,7 +75,7 @@ public class sign_up_correct_data extends Set {
 	    
 	    String signup_email=generatedString;
 	    String full_email="selenium.testing."+generatedString+"@gmail.com";
-	    System.out.println(full_email);
+	    System.out.println("Email ID = " + full_email);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
 		//driver.findElement(By.id("email_address")).sendKeys(full_email);
 		
