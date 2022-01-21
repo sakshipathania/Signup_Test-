@@ -243,11 +243,11 @@ public class sign_up_correct_data extends Set {
 		js.executeScript("arguments[0].scrollIntoView();",delete_profile_coupon);
 		delete_profile_coupon.click();
 		Thread.sleep(30000);
-		String verifyDeleteAccount = wait
+		/*String verifyDeleteAccount = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']"))).getText();
 		 Thread.sleep(3000);
 	         Assert.assertTrue("Account is not deleted", verifyDeleteAccount.contains("Your account has been deleted successfully."));
-	     System.out.println("your account delete successfully");
+	     System.out.println("your account delete successfully");*/
 	}
 	
 	
