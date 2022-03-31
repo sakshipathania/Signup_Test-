@@ -169,7 +169,7 @@ public class sign_up_correct_data extends Set {
 			popular_PPt.click();
 			Thread.sleep(2000);
 			WebElement select_PPt = wait.until(ExpectedConditions
-					.elementToBeClickable(By.xpath("//a[@title='Business Process Evaluation Powerpoint Show']")));
+					.elementToBeClickable(By.xpath("//div[4]/div[1]/ol[1]/li[4]/div[1]/a[1]/img[1]")));
 			js.executeScript("arguments[0].scrollIntoView();", select_PPt);
 			Thread.sleep(2000);
 			select_PPt.click();
