@@ -119,9 +119,9 @@ public class Non_Logged_In_User extends Set {
 		WebElement new_btn_signup = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".submit")));
 		Thread.sleep(2000);
 	    new_btn_signup.click();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		
-		driver.navigate().refresh();
+		
 	}
 
 	@Then("^user will be redirected to same pdp page viii$")
