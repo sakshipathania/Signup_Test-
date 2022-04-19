@@ -54,12 +54,12 @@ public class Non_Logged_In_User extends Set {
 	@Then("^user is redirected to Login page viii$")
 	public void user_is_redirected_to_Login_page_viii() throws Throwable {
 	  // WebElement sign_up_btn = driver.findElement(By.linkText("Sign up"));
-		WebElement Sign_Up= wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Sign up")));
+		/*WebElement Sign_Up= wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Sign up")));
 		Thread.sleep(2000);
 	        Sign_Up.click();
 			
 		//sign_up_btn.click();
-		Thread.sleep(2000);
+		Thread.sleep(2000);*/
 	}
   
   @Then("^user sign up with correct details viii$")
