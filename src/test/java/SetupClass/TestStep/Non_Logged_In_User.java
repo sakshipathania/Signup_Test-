@@ -159,7 +159,8 @@ public class Non_Logged_In_User extends Set {
 		 
 		
 
-		 WebElement delete_account = driver.findElement(By.cssSelector("#clicking"));
+		
+		 WebElement delete_account = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='clicking']")));
 		js.executeScript("arguments[0].scrollIntoView();",delete_account);
 		 delete_account.click();
 		 Thread.sleep(3000);
