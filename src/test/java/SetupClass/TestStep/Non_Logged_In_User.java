@@ -119,6 +119,11 @@ public class Non_Logged_In_User extends Set {
 		
 		
 		// login popup not appear
+		WebElement new_email_signup = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@title= 'Email Address']")));
+		Thread.sleep(2000);
+	        new_email_signup.sendKeys(full_email);
+		Thread.sleep(2000);
+		
 		WebElement new_fname_signup = wait.until(ExpectedConditions.elementToBeClickable(By.id("firstname")));
 		new_fname_signup.sendKeys("Selenium");
 		Thread.sleep(1000);
