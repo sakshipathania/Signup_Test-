@@ -45,7 +45,7 @@ public class Non_Logged_In_User extends Set {
 		Thread.sleep(2000);
 		download_btn_pdp_fp.click();
 		
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 		
 		
