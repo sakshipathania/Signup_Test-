@@ -145,7 +145,7 @@ public class Non_Logged_In_User extends Set {
 		WebElement new_btn_signup = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".submit")));
 
 		new_btn_signup.click();
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		
 	}
 
