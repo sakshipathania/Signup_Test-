@@ -87,7 +87,7 @@ public class Non_Logged_In_User extends Set {
 		
 
 		Thread.sleep(2000);
-	    WebElement new_email_signup = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@title= 'Email Address']")));
+	    /*WebElement new_email_signup = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@title= 'Email Address']")));
 		Thread.sleep(2000);
 	    new_email_signup.sendKeys(full_email);
 		Thread.sleep(2000);
@@ -115,7 +115,37 @@ public class Non_Logged_In_User extends Set {
 		WebElement new_btn_signup = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@title= 'Sign UP']")));
 		Thread.sleep(2000);
 	        new_btn_signup.click();
-		Thread.sleep(3000);
+		Thread.sleep(3000);*/
+		
+		
+		// login popup not appear
+		WebElement new_fname_signup = wait.until(ExpectedConditions.elementToBeClickable(By.id("firstname")));
+		new_fname_signup.sendKeys("Selenium");
+		Thread.sleep(1000);
+
+		WebElement new_lname_signup = wait.until(ExpectedConditions.elementToBeClickable(By.id("lastname")));
+		new_lname_signup.sendKeys("Testing");
+		Thread.sleep(1000);
+
+		// enter password
+		WebElement new_pwd_signup = wait.until(ExpectedConditions.elementToBeClickable(By.id("password")));
+		new_pwd_signup.sendKeys("selenium@123");
+
+		// verify the password
+		WebElement new_pwd1_signup = wait
+				.until(ExpectedConditions.elementToBeClickable(By.id("password-confirmation")));
+		new_pwd1_signup.sendKeys("selenium@123");
+
+		// enter captcha
+		WebElement new_captcha_signup = wait
+				.until(ExpectedConditions.elementToBeClickable(By.id("captcha_user_create")));
+		new_captcha_signup.sendKeys("Aj7W2mtf9namwf55");
+
+		// sign up button
+		WebElement new_btn_signup = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".submit")));
+
+		new_btn_signup.click();
+		Thread.sleep(1000);
 		
 	}
 
