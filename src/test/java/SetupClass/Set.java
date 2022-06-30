@@ -3,7 +3,7 @@ package SetupClass;
 import java.io.FileReader;
 import java.util.Properties;
 import java.util.logging.Logger;
-
+import org.openqa.selenium.PageLoadStrategy;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
+import java.util.concurrent.TimeUnit;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Set {
@@ -43,7 +43,10 @@ public class Set {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--disable-notifications");
+			options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 			driver = new ChromeDriver(options);
+			driver.manage().timeouts().implicitlyWait(9000, TimeUnit.MILLISECONDS);
+			driver.manage().timeouts().pageLoadTimeout(80, TimeUnit.SECONDS);
 			driver.manage().window().maximize();
 			Thread.sleep(1000);
 		}
