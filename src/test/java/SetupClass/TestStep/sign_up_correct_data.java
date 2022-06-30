@@ -142,7 +142,7 @@ public class sign_up_correct_data extends Set {
 		WebElement new_btn_signup = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".submit")));
 		Thread.sleep(1000);
 	    new_btn_signup.click();
-			Thread.sleep(1000);
+			Thread.sleep(5000);
 		String free_ppt_btn1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'Thank you for registering with SlideTeam.')]"))).getText();
 		Assert.assertTrue("user is not able to signup", free_ppt_btn1.contains("Thank you for registering with SlideTeam."));
 		System.out.println("signup successfully");
