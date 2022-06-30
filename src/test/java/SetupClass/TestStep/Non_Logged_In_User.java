@@ -165,7 +165,7 @@ public class Non_Logged_In_User extends Set {
 		
 		Thread.sleep(3000);
 		driver.get("https://www.slideteam.net/puzzles-with-multiple-business-icons-flat-powerpoint-design.html");
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 	    // driver.get("https://www.slideteam.net/puzzles-with-multiple-business-icons-flat-powerpoint-design.html");
 		//Thread.sleep(2000);
 		WebElement download_btn_pdp= wait.until(ExpectedConditions.elementToBeClickable(By.id("clicking")));
