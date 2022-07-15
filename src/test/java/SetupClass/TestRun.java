@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 //import gherkin.formatter.MonochromeFormats;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = { "." }, // tags= {"@Non_Logged_In_User"},
+@CucumberOptions(features = { "." }, // tags = ("@Non_Logged_In_User"),
 		plugin = { "pretty", "html:target/site/cucumber-pretty", "json:target/cucumber/cucumber.json",
 				"usage:target/usage.jsonx", "junit:target/cucumber.xml" }// ,
 //monochrome = true, //display the console output in a proper readable format

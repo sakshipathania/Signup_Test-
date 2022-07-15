@@ -27,7 +27,14 @@ public class Non_Logged_In_User extends SetClass {
 		driver.navigate().refresh();
 		Thread.sleep(2000);
 		// Thread.sleep(3000);
-		driver.get("https://www.slideteam.net/change-management-powerpoint-presentation-slides.html");
+		WebElement popularPPTs = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Most Downloaded']")));
+		popularPPTs.click();
+
+		WebElement selectPPt = wait.until(ExpectedConditions
+				.elementToBeClickable(By.xpath("//div[2]/div[1]/div[4]/div[1]/ol[1]/li[1]/div[1]/a[1]/img[1]")));
+		selectPPt.click();
+
 		driver.manage().deleteAllCookies();
 		Thread.sleep(4000); // wait 4 seconds to clear cookies.
 		driver.navigate().refresh();
@@ -161,8 +168,14 @@ public class Non_Logged_In_User extends SetClass {
 	public void user_download_the_product_viii() throws Throwable {
 
 		Thread.sleep(3000);
-		// driver.get("https://www.slideteam.net/puzzles-with-multiple-business-icons-flat-powerpoint-design.html");
-		// Thread.sleep(5000);
+		WebElement popularPPTs = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Most Downloaded']")));
+		popularPPTs.click();
+		Thread.sleep(3000);
+		WebElement selectPPt = wait.until(ExpectedConditions
+				.elementToBeClickable(By.xpath("//div[2]/div[1]/div[4]/div[1]/ol[1]/li[1]/div[1]/a[1]/img[1]")));
+		selectPPt.click();
+		Thread.sleep(3000);
 		WebElement download_btn_pdp = wait.until(ExpectedConditions.elementToBeClickable(By.id("clicking")));
 		js.executeScript("arguments[0].scrollIntoView();", download_btn_pdp);
 		Thread.sleep(2000);
