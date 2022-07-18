@@ -75,7 +75,8 @@ public class sign_up_correct_data extends SetClass {
 		// driver.findElement(By.id("email_address")).sendKeys(full_email);
 
 		Thread.sleep(2000);
-		WebElement new_email_signup = wait.until(ExpectedConditions.elementToBeClickable(By.id("email_address")));
+		WebElement new_email_signup = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='email_address']")));
 		Thread.sleep(2000);
 		new_email_signup.sendKeys(full_email);
 		Thread.sleep(2000);
@@ -84,12 +85,14 @@ public class sign_up_correct_data extends SetClass {
 	@Then("^User enter firstname and lastname to sign up cd$")
 	public void user_enter_firstname_and_lastname_to_sign_up_cd() throws InterruptedException {
 
-		WebElement new_fname_signup = wait.until(ExpectedConditions.elementToBeClickable(By.id("firstname")));
+		WebElement new_fname_signup = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='firstname']")));
 		Thread.sleep(2000);
 		new_fname_signup.sendKeys("Selenium");
 		Thread.sleep(2000);
 
-		WebElement new_lname_signup = wait.until(ExpectedConditions.elementToBeClickable(By.id("lastname")));
+		WebElement new_lname_signup = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='lastname']")));
 		Thread.sleep(2000);
 		new_lname_signup.sendKeys("Testing");
 		Thread.sleep(2000);
@@ -98,13 +101,14 @@ public class sign_up_correct_data extends SetClass {
 	@Then("^user enter password and confirm password to sign up cd$")
 	public void user_enter_password_and_confirm_password_to_sign_up_cd() throws InterruptedException {
 
-		WebElement new_pwd_signup = wait.until(ExpectedConditions.elementToBeClickable(By.id("password")));
+		WebElement new_pwd_signup = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='password']")));
 		Thread.sleep(2000);
 		new_pwd_signup.sendKeys("selenium@123");
 		Thread.sleep(2000);
 
 		WebElement new_pwd1_signup = wait
-				.until(ExpectedConditions.elementToBeClickable(By.id("password-confirmation")));
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='password-confirmation']")));
 		Thread.sleep(2000);
 		new_pwd1_signup.sendKeys("selenium@123");
 		Thread.sleep(2000);
@@ -113,11 +117,11 @@ public class sign_up_correct_data extends SetClass {
 	@Then("^user enter captcha to sign up cd$")
 	public void user_enter_captcha_to_sign_up_cd() throws InterruptedException {
 
-		WebElement new_captcha_signup = wait
-				.until(ExpectedConditions.elementToBeClickable(By.id("captcha_user_create")));
-		Thread.sleep(2000);
-		new_captcha_signup.sendKeys("Aj7W2mtf9namwf55");
-
+		/*
+		 * WebElement new_captcha_signup = wait
+		 * .until(ExpectedConditions.elementToBeClickable(By.id("captcha_user_create")))
+		 * ; Thread.sleep(2000); new_captcha_signup.sendKeys("Aj7W2mtf9namwf55");
+		 */
 	}
 
 	@Then("^check checkbox to sign up cd$")
@@ -134,9 +138,11 @@ public class sign_up_correct_data extends SetClass {
 	@Then("^user click on sign up button to sign up cd$")
 	public void user_click_on_sign_up_button_to_sign_up_cd() throws InterruptedException {
 
-		WebElement new_btn_signup = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".submit")));
-		Thread.sleep(1000);
+		WebElement new_btn_signup = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Sign Up']")));
+		Thread.sleep(2000);
 		new_btn_signup.click();
+
 		Thread.sleep(5000);
 		/*
 		 * String free_ppt_btn1 = wait.until(ExpectedConditions.elementToBeClickable(By.
