@@ -2,7 +2,6 @@ package SetupClass.TestStep;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -15,34 +14,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
 public class sign_up_correct_data extends SetClass {
-	WebDriverWait wait = new WebDriverWait(driver, 50);
-	JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	@Given("^user is already on sign up page cd$")
-	public void user_is_already_on_sign_up_page_cd() throws InterruptedException {
-		driver.manage().deleteAllCookies();
-		Thread.sleep(4000); // wait 4 seconds to clear cookies.
-		driver.navigate().refresh();
-		Thread.sleep(2000);
+	public void user_is_already_on_sign_up_page_cd() throws Throwable {
 		driver.get(AppURL);
-
-		driver.manage().deleteAllCookies();
-		Thread.sleep(4000); // wait 4 seconds to clear cookies.
-		driver.navigate().refresh();
-		Thread.sleep(2000);
-		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		log.info("It's opening the website URL");
-		Thread.sleep(2000);
-		/*
-		 * try { WebElement logout =
-		 * driver.findElement(By.xpath("//a[contains(text(),'Sign Out')]")); if
-		 * (logout.isEnabled()) { logout.click(); Thread.sleep(8000);
-		 * driver.navigate().refresh(); Thread.sleep(2000); } } catch
-		 * (NoSuchElementException Ext) {
-		 * 
-		 * }
-		 */
+		ClearBrowserCache();
 		Thread.sleep(3000);
 		try {
 			driver.findElement(By.cssSelector("ul.header > li:nth-child(1) > a:nth-child(1)")).click();
@@ -144,28 +120,11 @@ public class sign_up_correct_data extends SetClass {
 		new_btn_signup.click();
 
 		Thread.sleep(5000);
-		/*
-		 * String free_ppt_btn1 = wait.until(ExpectedConditions.elementToBeClickable(By.
-		 * xpath("//div[contains(text(),'Thank you for registering with SlideTeam.')]"))
-		 * ).getText(); Assert.assertTrue("user is not able to signup",
-		 * free_ppt_btn1.contains("Thank you for registering with SlideTeam."));
-		 * System.out.println("signup successfully");
-		 */
-		Thread.sleep(2000);
 
 	}
 
 	@Then("^user lands on pricing page and then user go to free ppts page cd$")
 	public void user_lands_on_pricing_page_and_then_user_go_to_free_ppts_page_cd() throws InterruptedException {
-
-		/*
-		 * Thread.sleep(1000); Actions actions = new Actions(driver); WebElement
-		 * free_ppt_btn1 =
-		 * wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Free Stuff"))
-		 * ); actions.moveToElement(free_ppt_btn1)
-		 * .moveToElement(driver.findElement(By.xpath("//a[@title='Free Business PPTs']"
-		 * ))).click().build() .perform();
-		 */
 
 		try {
 			WebElement popular_PPt = wait
@@ -188,31 +147,21 @@ public class sign_up_correct_data extends SetClass {
 	@Then("^user download a free product cd$")
 	public void user_download_a_free_product_cd() throws InterruptedException {
 
-		/*
-		 * driver.get(
-		 * "https://www.slideteam.net/circular-flow-of-process-4-stages-powerpoint-slides-templates.html"
-		 * ); Thread.sleep(3000);
-		 * 
-		 * WebElement dwnd_btn = driver.findElement(By.cssSelector("#clicking"));
-		 * js.executeScript("arguments[0].scrollIntoView();", dwnd_btn);
-		 * dwnd_btn.click(); Thread.sleep(3000);
-		 * driver.get("https://www.slideteam.net/"); Thread.sleep(3000);
-		 */
 		try {
 			Thread.sleep(2000);
 			WebElement download_PPt = wait
 					.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='clicking']")));
 			js.executeScript("arguments[0].scrollIntoView();", download_PPt);
 			download_PPt.click();
-			Thread.sleep(2000);
+			Thread.sleep(5000);
 
-			/*
-			 * String Error_message = wait .until(ExpectedConditions.elementToBeClickable(
-			 * By.
-			 * xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']"
-			 * ))) .getText(); Assert.assertTrue("message is not showing",
-			 * Error_message.contains("")); System.out.println("message is showing");
-			 */
+			// user should be on pricing page.
+			String expected_url = "https://www.slideteam.net/pricing";
+			Thread.sleep(3000);
+			String actual_URL = driver.getCurrentUrl();
+			System.out.println("Title = " + actual_URL);
+			Assert.assertEquals("url does not match", expected_url, actual_URL);
+
 		} catch (NoSuchElementException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -249,8 +198,8 @@ public class sign_up_correct_data extends SetClass {
 		js.executeScript("arguments[0].scrollIntoView();", delete_profile_coupon);
 		delete_profile_coupon.click();
 		Thread.sleep(3000);
-		String verifyDeleteAccount = wait.until(ExpectedConditions.elementToBeClickable(
-				By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']"))).getText();
+		String verifyDeleteAccount = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@x-html='message.text']"))).getText();
 		Thread.sleep(3000);
 		Assert.assertTrue("Account is not deleted",
 				verifyDeleteAccount.contains("Your account has been deleted successfully."));

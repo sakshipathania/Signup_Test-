@@ -187,6 +187,13 @@ public class Non_Logged_In_User extends SetClass {
 		download_btn_pdp.click();
 		Thread.sleep(2000);
 
+		// user should be on pricing page.
+		String expected_url = "https://www.slideteam.net/pricing";
+		Thread.sleep(3000);
+		String actual_URL = driver.getCurrentUrl();
+		System.out.println("Title = " + actual_URL);
+		Assert.assertEquals("url does not match", expected_url, actual_URL);
+
 	}
 
 	@Then("^user logout from website viii$")
@@ -221,8 +228,8 @@ public class Non_Logged_In_User extends SetClass {
 		delete_profile_coupon.click();
 		Thread.sleep(30000);
 		Thread.sleep(3000);
-		String verifyDeleteAccount = wait.until(ExpectedConditions.elementToBeClickable(
-				By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']"))).getText();
+		String verifyDeleteAccount = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@x-html='message.text']"))).getText();
 		Thread.sleep(3000);
 		Assert.assertTrue("Account is not deleted",
 				verifyDeleteAccount.contains("Your account has been deleted successfully."));

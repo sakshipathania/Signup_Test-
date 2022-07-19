@@ -3,6 +3,8 @@ package SetupClass;
 import java.io.FileReader;
 import java.util.Properties;
 import java.util.logging.Logger;
+
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.PageLoadStrategy;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -11,6 +13,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.concurrent.TimeUnit;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -27,7 +31,9 @@ public class SetClass {
 	public String Button_Click_Time;
 	public String message_write_time;
 	public String TestFile = "C:\\Users\\slide53\\eclipse-workspace\\SlideTeamWebsiteFormsAuto\\write.txt";
-	
+	public static WebDriverWait wait;
+	public static JavascriptExecutor js;
+
 	@BeforeClass
 	public static void before_Class() throws Exception {
 		log = Logger.getLogger(BeforeClass.class.getName());
@@ -38,7 +44,7 @@ public class SetClass {
 		// on source lab setup
 		AppURL = property.getProperty("App_url");
 		System.out.println("Bname=====" + AppURL);
-	
+
 		if ((local_chrome.equals("yes"))) {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
@@ -46,6 +52,8 @@ public class SetClass {
 			options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 			driver = new ChromeDriver(options);
 			driver.manage().timeouts().implicitlyWait(9000, TimeUnit.MILLISECONDS);
+			wait = new WebDriverWait(driver, 50);
+			js = (JavascriptExecutor) driver;
 			driver.manage().timeouts().pageLoadTimeout(80, TimeUnit.SECONDS);
 			driver.manage().window().maximize();
 			Thread.sleep(1000);
@@ -59,7 +67,8 @@ public class SetClass {
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(9000, TimeUnit.MILLISECONDS);
 			driver.manage().timeouts().pageLoadTimeout(80, TimeUnit.SECONDS);
-			
+			wait = new WebDriverWait(driver, 50);
+			js = (JavascriptExecutor) driver;
 
 			Thread.sleep(1000);
 		} else {
@@ -67,22 +76,22 @@ public class SetClass {
 			System.out.println("platform does not provide");
 
 		}
+	}
 
-		driver.get(AppURL);
+	public static void ClearBrowserCache() throws Throwable {
+
+		driver.manage().deleteAllCookies();
+		Thread.sleep(4000); // wait 7 seconds to clear cookies.
+		driver.navigate().refresh();
 		Thread.sleep(2000);
-	    driver.manage().deleteAllCookies();
-	    Thread.sleep(2000);
+	}
 
-			
-		}
-	
-	
 	@AfterClass
 	public static void after_Class() throws InterruptedException {
 		Thread.sleep(2000);
-		driver.quit();  //->> don't want to close the browser for now
+		driver.quit(); // ->> don't want to close the browser for now
 		Thread.sleep(2000);
-	
+
 	}
 
 }
