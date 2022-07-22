@@ -15,18 +15,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
 public class Non_Logged_In_User extends SetClass {
-	WebDriverWait wait = new WebDriverWait(driver, 50);
-	JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	@Given("^user is already on PDP Page MD viii$")
 	public void user_is_already_on_PDP_Page_MD_viii() throws Throwable {
 
 		driver.get("https://www.slideteam.net/");
-		driver.manage().deleteAllCookies();
-		Thread.sleep(4000); // wait 4 seconds to clear cookies.
-		driver.navigate().refresh();
+		ClearBrowserCache();
 		Thread.sleep(2000);
-		// Thread.sleep(3000);
 		WebElement popularPPTs = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Most Downloaded']")));
 		popularPPTs.click();
@@ -35,10 +30,7 @@ public class Non_Logged_In_User extends SetClass {
 				.elementToBeClickable(By.xpath("//div[2]/div[1]/div[4]/div[1]/ol[1]/li[1]/div[1]/a[1]/img[1]")));
 		selectPPt.click();
 
-		driver.manage().deleteAllCookies();
-		Thread.sleep(4000); // wait 4 seconds to clear cookies.
-		driver.navigate().refresh();
-		Thread.sleep(2000);
+		
 
 	}
 
@@ -57,12 +49,10 @@ public class Non_Logged_In_User extends SetClass {
 
 	@Then("^user is redirected to Login page viii$")
 	public void user_is_redirected_to_Login_page_viii() throws Throwable {
-		// WebElement sign_up_btn = driver.findElement(By.linkText("Sign up"));
+	
 		WebElement Sign_Up = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Sign up")));
 		Thread.sleep(2000);
 		Sign_Up.click();
-
-		// sign_up_btn.click();
 		Thread.sleep(2000);
 	}
 
