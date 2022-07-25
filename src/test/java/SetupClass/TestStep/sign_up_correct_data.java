@@ -136,7 +136,8 @@ public class sign_up_correct_data extends SetClass {
 					.elementToBeClickable(By.xpath("//div[4]/div[1]/ol[1]/li[4]/div[1]/a[1]/img[1]")));
 			js.executeScript("arguments[0].scrollIntoView();", select_PPt);
 			Thread.sleep(2000);
-			select_PPt.click();
+			//select_PPt.click();
+			js.executeScript("arguments[0].click();", select_PPt);
 		} catch (NoSuchElementException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
