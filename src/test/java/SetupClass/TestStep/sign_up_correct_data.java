@@ -181,17 +181,18 @@ public class sign_up_correct_data extends SetClass {
 
 		WebElement delete_account = driver.findElement(By.cssSelector("#clicking"));
 		js.executeScript("arguments[0].scrollIntoView();", delete_account);
-		delete_account.click();
+		js.executeScript("arguments[0].click();", delete_account);
+		//delete_account.click();
 		Thread.sleep(3000);
 		WebElement delete_reason = driver.findElement(By.cssSelector("#exampleRadios1"));
 		Thread.sleep(3000);
-		delete_reason.click();
+		js.executeScript("arguments[0].click();", delete_reason);
 		Thread.sleep(3000);
 
 		WebElement delete_profile = wait
 				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#delete-final")));
 		js.executeScript("arguments[0].scrollIntoView();", delete_profile);
-		delete_profile.click();
+		js.executeScript("arguments[0].click();", delete_profile);
 		Thread.sleep(3000);
 
 		WebElement delete_profile_coupon = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(
