@@ -25,7 +25,6 @@ public class SetClass {
 	public static String AppURL;
 	public static Properties property = new Properties(System.getProperties());
 	public static Logger log;
-	public static WebElement webelement;
 	public static String browser;
 	protected static WebDriverWait wait;
 	protected static JavascriptExecutor js;

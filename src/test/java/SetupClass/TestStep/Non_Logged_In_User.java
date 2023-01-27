@@ -30,8 +30,6 @@ public class Non_Logged_In_User extends SetClass {
 				.elementToBeClickable(By.xpath("//div[2]/div[1]/div[4]/div[1]/ol[1]/li[1]/div[1]/a[1]/img[1]")));
 		selectPPt.click();
 
-		
-
 	}
 
 	@Then("^User click on Download button to download the product viii$")
@@ -49,7 +47,7 @@ public class Non_Logged_In_User extends SetClass {
 
 	@Then("^user is redirected to Login page viii$")
 	public void user_is_redirected_to_Login_page_viii() throws Throwable {
-	
+
 		WebElement Sign_Up = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Sign up")));
 		Thread.sleep(2000);
 		Sign_Up.click();
@@ -191,33 +189,32 @@ public class Non_Logged_In_User extends SetClass {
 
 		Thread.sleep(3000);
 
-		WebElement account = driver.findElement(By.xpath("//a[contains(.,'My Account')]"));
+		WebElement account = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'My Account')]")));
+		js.executeScript("arguments[0].click();", account);
 		Thread.sleep(3000);
-		account.click();
-		Thread.sleep(8000);
 
 		WebElement delete_account = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='clicking']")));
-		js.executeScript("arguments[0].scrollIntoView();", delete_account);
-		delete_account.click();
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='clicking']")));
 		Thread.sleep(3000);
-		WebElement delete_reason = driver.findElement(By.cssSelector("#exampleRadios1"));
+		// js.executeScript("arguments[0].scrollIntoView();", delete_account);
+		js.executeScript("arguments[0].click();", delete_account);
+
+		Thread.sleep(3000);
+		WebElement delete_reason = driver.findElement(By.cssSelector("input#exampleRadios1"));
 		Thread.sleep(3000);
 		js.executeScript("arguments[0].click();", delete_reason);
 		Thread.sleep(3000);
 
 		WebElement delete_profile = wait
-				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#delete-final")));
-		js.executeScript("arguments[0].scrollIntoView();", delete_profile);
+				.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button#delete-final")));
 		js.executeScript("arguments[0].click();", delete_profile);
 		Thread.sleep(3000);
 
-		WebElement delete_profile_coupon = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(
-				"#flipModal > div > div > div.modal-footer.button_action > button.btn.btn-default.button_2")));
-		js.executeScript("arguments[0].scrollIntoView();", delete_profile_coupon);
-		js.executeScript("arguments[0].click();", delete_profile_coupon);
+		WebElement delete_profile_coupon = wait.until(
+				ExpectedConditions.elementToBeClickable(By.xpath("//button[@class = 'btn btn-default button_2']")));
+		delete_profile_coupon.click();
 		Thread.sleep(30000);
-		Thread.sleep(3000);
 		String verifyDeleteAccount = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@x-html='message.text']"))).getText();
 		Thread.sleep(3000);
