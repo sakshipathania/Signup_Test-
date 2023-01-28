@@ -208,4 +208,5 @@ public class sign_up_correct_data extends SetClass {
 				verifyDeleteAccount.contains("Your account has been deleted successfully."));
 		System.out.println("your account delete successfully");
 
+	}
 }
