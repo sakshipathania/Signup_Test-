@@ -195,7 +195,7 @@ public class Non_Logged_In_User extends SetClass {
 		Thread.sleep(3000);
 
 		WebElement delete_account = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='clicking']")));
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='clicking']")));
 		Thread.sleep(3000);
 		// js.executeScript("arguments[0].scrollIntoView();", delete_account);
 		js.executeScript("arguments[0].click();", delete_account);
