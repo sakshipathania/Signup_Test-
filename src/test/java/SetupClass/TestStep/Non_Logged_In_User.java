@@ -193,7 +193,7 @@ public class Non_Logged_In_User extends SetClass {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'My Account')]")));
 		js.executeScript("arguments[0].click();", account);
 		Thread.sleep(3000);
-
+		chatWindow();
 		WebElement delete_account = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='clicking']")));
 		Thread.sleep(3000);
@@ -208,12 +208,12 @@ public class Non_Logged_In_User extends SetClass {
 		WebElement delete_reason = wait
 				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#exampleRadios1")));
 		Thread.sleep(3000);
-		js.executeScript("arguments[0].click();", delete_reason);
+		delete_reason.click();
 		Thread.sleep(3000);
 
 		WebElement delete_profile = wait
 				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button#delete-final")));
-		js.executeScript("arguments[0].click();", delete_profile);
+		delete_profile.click();
 		Thread.sleep(3000);
 
 		WebElement delete_profile_coupon = wait.until(
