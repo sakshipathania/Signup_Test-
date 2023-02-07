@@ -178,41 +178,33 @@ public class sign_up_correct_data extends SetClass {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'My Account')]")));
 		js.executeScript("arguments[0].click();", account);
 		Thread.sleep(3000);
-		chatWindow(); 
-		WebElement delete_account = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='clicking']")));
-		Thread.sleep(3000);
-		// js.executeScript("arguments[0].scrollIntoView();", delete_account);
+	
+		WebElement delete_account = wait.until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(@id, 'clicking')]/self::a")));
+		Thread.sleep(4000);
 		js.executeScript("arguments[0].click();", delete_account);
 
-		Thread.sleep(3000);
-		boolean deletePopUp = wait
-				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#exampleRadios1")))
-				.isDisplayed();
-		Assert.assertTrue("Delete pop-up was not dispalyed", deletePopUp);
 		WebElement delete_reason = wait
 				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input#exampleRadios1")));
 		Thread.sleep(3000);
-		delete_reason.click();
+		js.executeScript("arguments[0].click();", delete_reason);
 		Thread.sleep(3000);
 
 		WebElement delete_profile = wait
 				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button#delete-final")));
-		delete_profile.click();
+		js.executeScript("arguments[0].click();", delete_profile);
 		Thread.sleep(3000);
-		chatWindow();
 
 		WebElement delete_profile_coupon = wait.until(
 				ExpectedConditions.elementToBeClickable(By.xpath("//button[@class = 'btn btn-default button_2']")));
-		delete_profile_coupon.click();
+		js.executeScript("arguments[0].click();", delete_profile_coupon);
 		Thread.sleep(3000);
-		
+
 		String verifyDeleteAccount = wait
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@x-html='message.text']"))).getText();
 		Thread.sleep(3000);
 		Assert.assertTrue("Account is not deleted",
 				verifyDeleteAccount.contains("Your account has been deleted successfully."));
 		System.out.println("your account delete successfully");
-
 	}
 }
