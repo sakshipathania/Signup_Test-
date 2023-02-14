@@ -1,5 +1,6 @@
 package SetupClass.TestStep;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -26,9 +27,10 @@ public class Non_Logged_In_User extends SetClass {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Most Downloaded']")));
 		popularPPTs.click();
 
-		WebElement selectPPt = wait.until(ExpectedConditions
-				.elementToBeClickable(By.xpath("//div[2]/div[1]/div[4]/div[1]/ol[1]/li[1]/div[1]/a[1]/img[1]")));
-		selectPPt.click();
+		List<WebElement> selectPPT = driver
+				.findElements(By.xpath("//div[@class = 'product-item-info ppt-product']//img"));
+		selectPPT.get(1).click();
+		Thread.sleep(3000);
 
 	}
 
@@ -165,10 +167,11 @@ public class Non_Logged_In_User extends SetClass {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Most Downloaded']")));
 		popularPPTs.click();
 		Thread.sleep(3000);
-		WebElement selectPPt = wait.until(ExpectedConditions
-				.elementToBeClickable(By.xpath("//div[2]/div[1]/div[4]/div[1]/ol[1]/li[1]/div[1]/a[1]/img[1]")));
-		selectPPt.click();
+		List<WebElement> selectPPT = driver
+				.findElements(By.xpath("//div[@class = 'product-item-info ppt-product']//img"));
+		selectPPT.get(1).click();
 		Thread.sleep(3000);
+
 		WebElement download_btn_pdp = wait.until(ExpectedConditions.elementToBeClickable(By.id("clicking")));
 		js.executeScript("arguments[0].scrollIntoView();", download_btn_pdp);
 		Thread.sleep(2000);
