@@ -1,5 +1,6 @@
 package SetupClass.TestStep;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import org.junit.Assert;
@@ -132,12 +133,9 @@ public class sign_up_correct_data extends SetClass {
 			Thread.sleep(2000);
 			popular_PPt.click();
 			Thread.sleep(2000);
-			WebElement select_PPt = wait.until(ExpectedConditions
-					.elementToBeClickable(By.xpath("//div[4]/div[1]/ol[1]/li[4]/div[1]/a[1]/img[1]")));
-			js.executeScript("arguments[0].scrollIntoView();", select_PPt);
-			Thread.sleep(2000);
-			// select_PPt.click();
-			js.executeScript("arguments[0].click();", select_PPt);
+			List<WebElement> selectPPT = driver
+					.findElements(By.xpath("//div[@class = 'product-item-info ppt-product']//img"));
+			selectPPT.get(1).click();
 		} catch (NoSuchElementException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -178,7 +176,7 @@ public class sign_up_correct_data extends SetClass {
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'My Account')]")));
 		js.executeScript("arguments[0].click();", account);
 		Thread.sleep(3000);
-	
+
 		WebElement delete_account = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(@id, 'clicking')]/self::a")));
 		Thread.sleep(4000);
